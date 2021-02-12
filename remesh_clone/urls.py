@@ -19,5 +19,8 @@ from conversations import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index_view, name='homepage')
+    path('', views.index_view, name='homepage'),
+    path('new-conversation/', views.new_conversation_view, name='conversation'),
+    path('current-conversations/', views.current_conversations_view, name='current-conversation'),
+    path('conversation-detail/<int:conversation_id>/', views.conversation_detail_view, name='convo-detail')
 ]

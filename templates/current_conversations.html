@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% include 'navigation.html' %}
+
+<h1 class="mt-2 ml-5">Conversations:</h1>
+{% for convo in conversations %}
+<div class="card mt-2 ml-5" style="width: 18rem;">
+  <div class="card-body">
+    <a href="/conversation-detail/{{ convo.id }}" class="card-link">{{ convo.title }}</a>
+    <p class="card-text">{{ convo.start_date.date }}</p>
+    <p class="card-text">Id: {{ convo.id }}</p>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}

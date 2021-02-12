@@ -1,10 +1,11 @@
 from django import forms
-
-
-class DateInput(forms.DateInput):
-    input_date = 'date'
+# from .models import Conversation
 
 
 class ConversationForm(forms.Form):
     title = forms.CharField(max_length=140)
-    start_date = forms.DateField(widget=DateInput)\
+    start_date = forms.DateField(
+            required=True,
+            help_text="Format: DD/MM/YYYY",
+            input_formats=['%d/%m/%Y']
+            )
