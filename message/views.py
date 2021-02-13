@@ -3,7 +3,6 @@ from .forms import MessageForm
 from .models import Message
 from thoughts.models import Thoughts
 from conversations.models import Conversation
-# Create your views here.
 
 
 def new_message_view(request, conversation_id):
@@ -32,5 +31,4 @@ def message_detail_view(request, message_id):
     return render(request, html, {
         'message': message,
         'thoughts': thoughts
-
     })

@@ -1,11 +1,7 @@
 from django.shortcuts import render, reverse, HttpResponseRedirect
 from .forms import ConversationForm
 from .models import Conversation
-# from message.models import Message
-# from thoughts.models import Thoughts
 from django.views.generic import View
-
-# Create your views here.
 
 
 def index_view(request):

@@ -2,7 +2,6 @@ from django.shortcuts import render, reverse, HttpResponseRedirect
 from .forms import ThoughtForm
 from message.models import Message
 from .models import Thoughts
-# Create your views here.
 
 
 def new_thought_view(request, message_id):
