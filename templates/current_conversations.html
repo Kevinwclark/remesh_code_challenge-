@@ -7,9 +7,9 @@
 {% for convo in conversations %}
 <div class="card mt-2 ml-5" style="width: 18rem;">
   <div class="card-body">
+  <h6 class="card-title">Conversation:</h6>
     <a href="/conversation-detail/{{ convo.id }}" class="card-link">{{ convo.title }}</a>
     <p class="card-text">{{ convo.start_date.date }}</p>
-    <p class="card-text">Id: {{ convo.id }}</p>
   </div>
 </div>
 {% endfor %}

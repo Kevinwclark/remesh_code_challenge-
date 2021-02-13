@@ -23,6 +23,7 @@ urlpatterns = [
     path('new-conversation/', views.new_conversation_view, name='conversation'),
     path('current-conversations/', views.current_conversations_view, name='current-conversation'),
     path('conversation-detail/<int:conversation_id>/', views.conversation_detail_view, name='convo-detail'),
+    path('search-conversations', views.Search.as_view(), name='search'),
     path('', include('thoughts.urls')),
     path('', include('message.urls')),
 ]

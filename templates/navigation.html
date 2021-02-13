@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="jumbotron mt-2 bg-success">
+<div class="jumbotron mt-2 bg-warning">
     <div>  
         <div class="container"> 
             <h1 class="display-4 font-weight-bold">Remesh Clone</h1>
@@ -11,6 +11,17 @@
                 <a class="btn btn-primary mt-2" role="button" href='/new-conversation'>New Conversation</a>
 
                 <a class="btn btn-primary mt-2" href='/current-conversations' role="button" >Current Conversations</a>
+
+                {% comment %} <a class="btn btn-primary mt-2" href='/search-conversations' role="button" >Search</a> {% endcomment %}
+            <hr>
+            <h3>Search Conversations</h3>
+                <form class="navbar-form form-inline" action="{% url 'search' %}" method="get">
+		        <form class="navbar-form form-inline" action="" method="get">
+			    <div class="input-group search-box">								
+				<input type="search" id="search" name="search" class="form-control" placeholder="Search">
+				<span class="input-group-addon" type="submit"></span>
+			</div>
+		</form>
         </div>
     </div>
 </div>
