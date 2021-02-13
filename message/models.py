@@ -7,4 +7,4 @@ from conversations.models import Conversation
 class Message(models.Model):
     text = models.CharField(max_length=140)
     created_at = models.DateTimeField(default=timezone.now)
-    conversation = models.ForeignKey(Conversation, on_delete=models.CASCADE, null=True, related_name='conversation')
+    conversation = models.ForeignKey(Conversation, on_delete=models.CASCADE, null=True)

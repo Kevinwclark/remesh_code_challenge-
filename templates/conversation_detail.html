@@ -7,7 +7,7 @@
 <h2 class="mt-2 ml-5">Conversation: {{ convo.title }}</h2>
 <h3 class="mt-2 ml-5">Date: {{ convo.start_date.date }}</h3>
 
-{% for message in messages %}
+{% for message in convo.message_set.all %}
 <div class="card mt-2 ml-5" style="width: 18rem;">
   <div class="card-body">
     <h6 class="card-title">Message:</h6>
@@ -15,6 +15,16 @@
     <p class="card-text">{{ message.created_at }}</p>
   </div>
 </div>
+<br>
+
+  {% for thought in  message.thoughts_set.all %}
+    <ul class="mt-2 ml-5">
+        <h6 class="card-title">Thought:</h6>
+        <a href="/thought-detail/{{ thought.id }}/" class="card-link">{{ thought.text }}</a>
+        <p class="card-text">{{ thought.created_at }}</p>
+        <br>
+    </ul>
+    {% endfor %}  
 {% endfor %}
 
 {% endblock %}
