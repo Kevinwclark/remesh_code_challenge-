@@ -20,7 +20,9 @@ def new_conversation_view(request):
                 title=data['title'],
                 start_date=data['start_date']
             )
-            return HttpResponseRedirect(reverse('homepage'))
+            return HttpResponseRedirect(reverse(
+                    'current-conversation',
+            ))
     form = ConversationForm()
     html = 'conversation.html'
     return render(request, html, {'form': form})

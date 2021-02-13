@@ -16,7 +16,10 @@ def new_message_view(request, conversation_id):
                 text=data['text'],
                 conversation=convo
             )
-            return HttpResponseRedirect(reverse('homepage'))
+            return HttpResponseRedirect(reverse(
+                'convo-detail',
+                kwargs={'conversation_id': conversation_id}
+                ))
     form = MessageForm()
     html = 'new_message.html'
     return render(request, html, {'form': form})
