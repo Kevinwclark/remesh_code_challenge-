@@ -2,6 +2,7 @@ from django.shortcuts import render, reverse, HttpResponseRedirect
 from .forms import ConversationForm
 from .models import Conversation
 from django.views.generic import View
+from django.core.exceptions import ObjectDoesNotExist
 
 
 def index_view(request):
@@ -44,6 +45,8 @@ class Search(View):
     def get(self, request):
         html = "search.html"
         search = request.GET.get('search')
-        conversation = Conversation.objects.get(title=search)
-        print(conversation)
-        return render(request, html, {'conversation': conversation})
+        try:
+            conversation = Conversation.objects.get(title=search)
+            return render(request, html, {'conversation': conversation})
+        except ObjectDoesNotExist:
+            return render(request, html)
