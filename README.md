@@ -2,14 +2,14 @@
 
 A simplified version of Remesh. The basics of Remesh are such that there are conversations. In each conversation, users send messages. Another group of users respond to those messages by submitting thoughts.
 
-### Prerequisites
+## Prerequisites
 
 What things you need to install the software.
-* Go to [Python](https://www.python.org/) for instructions to install - test if it installed with the command below. You should see a version like 3.9.0. If not, please recheck the Python instructions. 
+Go to [Python](https://www.python.org/) for instructions to install - test if it installed with the command below. You should see a version like 3.9.0. If not, please recheck the Python instructions. 
 ```
 python --version 
 ```
-* Go to [Pipenv](https://pipenv.pypa.io/en/latest/install/#id2) for instructions to install. Test with command below. You should see something similar to 'pipenv, version 2020.11.15'
+Go to [Pipenv](https://pipenv.pypa.io/en/latest/install/#id2) for instructions to install. Test with command below. You should see something similar to 'pipenv, version 2020.11.15'
 
 "Pipenv is a dependency manager for Python projects. If you’re familiar with Node.js’s npm or Ruby’s bundler, it is similar in spirit to those tools. While pip can install Python packages, Pipenv is recommended as it’s a higher-level tool that simplifies dependency management for common use cases. -quoted from [here](https://pipenv.pypa.io/en/latest/install/#id2)"
 
@@ -20,7 +20,7 @@ With everything installed we can move forward.
 
 ## Getting Started
 
-* Go to the GitHub [Remesh Repo](https://github.com/Kevinwclark/remesh_code_challenge-) and clone the repo. Open a terminal or command line and cd to the directory you would like to place this project. Enter the below command. 
+Go to the GitHub [Remesh Repo](https://github.com/Kevinwclark/remesh_code_challenge-) and clone the repo. Open a terminal or command line and cd to the directory you would like to place this project. Enter the below command. Keep in mind, between the <> in the command below is the link copied from GitHub.
 
 ```
 git clone <name of repository>
@@ -34,77 +34,94 @@ Now that we have it lets move into the directory with:
 cd remesh_code_challenge-
 ```
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+## Getting The Project Running
 
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+Lets create a virtual evnvironment and manage all dependencies. In our terminal, and in the project just created run:
 
 ```
-Give the example
+pipenv install
+```
+To activate this project's virtualenv, run: 
+
+```
+pipenv shell
+```
+Now is the time to open the code in your editor. In the directory 'remesh_clone' create a .env file. The file structure should look similar to the structure below. 
+
+ 
+    ├── ...
+    ├── remesh_clone                  
+    │   ├── __init__.py             
+    │   ├── .env              
+    │   ├── asgi.py            
+    │   ├── settings.py            
+    │   └── # etc.
+    └── ...
+
+In this file you will need to place the SECRET_KEY sent with the email for this submission.  
+It will look like the example below. Make sure there are no spaces and no quotes. Also, the key below will not work.
+```
+SECRET_KEY=us=5@%y)#=ko(rxq4$vrkumlt!!0lskdflaksdjfl;askdjftb+ccpr(8
 ```
 
-And repeat
-
+Next, we need to run a command to set up our database:
 ```
-until finished
+python manage.py migrate
+```
+Run this command if you would like to create a superuser to access the admin panel. The admin panel will allow you to create data easily. Follow the prompts. This command is optional. Remember the username and password to later access the admin
+```
+python manage.py createsuperuser
+```
+We made it this far! Let's spin up our server!
+```
+python manage.py runserver
+```
+You should see something like this:
+```
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 13, 2021 - 06:30:38
+Django version 3.1.6, using settings 'remesh_clone.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+Go to your browswer and enter this link:
+```
+http://127.0.0.1:8000/
+```
+If you created a superuser, you can access the admin panel with this:
+```
+http://127.0.0.1:8000/admin
+```
+
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
+Have you project virtual environment running. CONTROL-C if the server is running. Then enter the following command. 
 ```
-Give an example
+./manage.py test
 ```
-
-### And coding style tests
-
-Explain what these tests test and why
-
+What you should see:
 ```
-Give an example
+----------------------------------------------------------------------
+Ran 5 tests in 0.060s
+
+OK
+Destroying test database for alias 'default'...
 ```
 
-## Deployment
 
-Add additional notes about how to deploy this on a live system
+## Author
 
-## Built With
+* **Kevin Clark** - [GitHub](https://github.com/Kevinwclark)
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Thank you to Remesh for allowing me to submit my project. 
+* Hat tip to Kenzie Academy and Instructors.
+
+
