@@ -1,7 +1,7 @@
 from django.shortcuts import render, reverse, HttpResponseRedirect
 from .forms import ConversationForm
 from .models import Conversation
-from django.contrib import messages
+from message.models import Message
 
 # Create your views here.
 
@@ -21,8 +21,6 @@ def new_conversation_view(request):
                 start_date=data['start_date']
             )
             return HttpResponseRedirect(reverse('homepage'))
-        else:
-            messages.error(request, "Error")
     form = ConversationForm()
     html = 'conversation.html'
     return render(request, html, {'form': form})
@@ -35,6 +33,10 @@ def current_conversations_view(request):
 
 
 def conversation_detail_view(request, conversation_id):
-    conversation = Conversation.objects.get(id=conversation_id)
+    convo = Conversation.objects.get(id=conversation_id)
+    messages = Message.objects.filter(conversation=convo)
     html = 'conversation_detail.html'
-    return render(request, html, {'conversation': conversation})
+    return render(request, html, {
+        'convo': convo,
+        'messages': messages
+        })

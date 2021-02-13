@@ -3,11 +3,18 @@
 
 {% include 'navigation.html' %}
 
-<h1 class="mt-2 ml-5">Conversation: {{ conversation.title }}</h1>
-<h2 class="mt-2 ml-5">Date: {{ conversation.start_date.date }}</h2>
-<a class="btn btn-primary ml-5" role="button" href='/new-message/'>New Message</a>
+<a class="btn btn-primary ml-5" role="button" href='/new-message/{{ convo.id }}/'>New Message</a>
+<h2 class="mt-2 ml-5">Conversation: {{ convo.title }}</h2>
+<h3 class="mt-2 ml-5">Date: {{ convo.start_date.date }}</h3>
 
-
-
+{% for message in messages %}
+<div class="card mt-2 ml-5" style="width: 18rem;">
+  <div class="card-body">
+    <h6 class="card-title">Message:</h6>
+    <a href="/message-detail/{{ message.id }}/" class="card-link">{{ message.text }}</a>
+    <p class="card-text">{{ message.created_at }}</p>
+  </div>
+</div>
+{% endfor %}
 
 {% endblock %}

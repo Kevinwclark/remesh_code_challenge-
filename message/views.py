@@ -1,19 +1,33 @@
 from django.shortcuts import render, reverse, HttpResponseRedirect
 from .forms import MessageForm
 from .models import Message
+from thoughts.models import Thoughts
+from conversations.models import Conversation
 # Create your views here.
 
 
-def new_message_view(request):
+def new_message_view(request, conversation_id):
     if request.method == "POST":
         form = MessageForm(request.POST)
         if form.is_valid():
+            convo = Conversation.objects.get(id=conversation_id)
             data = form.cleaned_data
             Message.objects.create(
-                title=data['title'],
-                create_at=data['created_at']
+                text=data['text'],
+                conversation=convo
             )
-            return HttpResponseRedirect(reverse('convo-detail'))
+            return HttpResponseRedirect(reverse('homepage'))
     form = MessageForm()
     html = 'new_message.html'
     return render(request, html, {'form': form})
+
+
+def message_detail_view(request, message_id):
+    message = Message.objects.get(id=message_id)
+    thoughts = Thoughts.objects.filter(message=message)
+    html = 'message_detail.html'
+    return render(request, html, {
+        'message': message,
+        'thoughts': thoughts
+
+    })
